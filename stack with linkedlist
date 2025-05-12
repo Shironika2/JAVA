@@ -1,0 +1,120 @@
+package stack;
+
+public class main {
+	public static void main(String[] args) {
+		Stack newstack=new Stack();
+		newstack.push(5);
+		newstack.push(4);
+		newstack.push(3);
+		newstack.push(1);
+		newstack.del(4);
+		
+		newstack.display();
+		
+		
+		
+	}
+
+}
+class Stack{
+	Node top=null;
+	class Node{
+		int data;
+		Node next;
+		
+		Node(int data){
+			this.data=data;
+			this.next=null;
+		}}
+		
+		
+		public void push(int data) {
+			Node n=new Node(data);
+			n.next=top;
+			top=n;
+		}
+		public int pop() {
+			if(top==null) {
+				System.out.println("Stack is empty");
+				return 0;
+			}
+			
+			System.out.println("the value popped is" +top.data);
+			top=top.next;
+			return 0;
+		}
+		public int peek() {
+			if(top==null) {
+				System.out.println("Stack is empty");
+				return 0;
+			}
+			System.out.println(top.data);
+			return 0;
+		}
+		public boolean isempty() {
+			return(top==null);
+		}
+		public void display() {
+			Node temp=top;
+			while(temp!=null) {
+				System.out.println(temp.data);
+				temp=temp.next;
+			}
+		}
+		public void ins(int pos,int value) {
+			Node n=new Node(value);
+			if(pos==1) {
+				top=top.next;
+				top=n;
+				return;
+			}
+			if(pos<0) {
+				System.out.println("invalid");
+				return;
+			}
+			
+			Node temp=top;
+			for(int i=1;i<pos-1;i++) {
+				
+				if(temp==null) {
+					System.out.println("list is empty");
+				}
+				temp=temp.next;
+			}
+			if(temp!=null) {
+			n.next=temp.next;
+			temp.next=n;
+		}
+			else {
+				temp.next=n;
+			}
+	}
+		public void del(int pos) {
+			Node prev=null;
+			Node temp=top;
+			if(pos==1) {
+				top=top.next;
+				return;
+			}
+			else if(pos<0) {
+				System.out.println("invalid");
+				return;
+			}
+			else {
+				
+				for(int i=1;i<pos;i++) {
+						 prev=temp;
+					temp=temp.next;
+					}
+			}
+				if(temp ==null) {
+				 prev.next=null;
+					
+				}
+				else {
+				prev.next=temp.next;
+			}
+			}
+		}
+
+
